@@ -19,6 +19,21 @@ export const Flex = styled("div", {
   display: "flex",
   gap: "$1",
   alignItems: "center",
+  justifyContent: "flex-start"
+});
+
+export const Flex2 = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "$1",
+  alignItems: "flex-start",
+});
+
+export const Flex3 = styled("div", {
+  display: "flex",
+  gap: "$1",
+  alignItems: "center",
+  justifyContent: "center"
 });
 
 export const Box = styled("div", {
@@ -130,6 +145,7 @@ export const GlobalStyle: React.FC<GlobalStyleProps> = ({ children }) => {
       title4: "1.25rem",
       text1: "1rem",
       text2: "0.875rem",
+      text3: "1.15rem",
 
       // Mobile
       title1Mobile: "$title2",
@@ -142,6 +158,7 @@ export const GlobalStyle: React.FC<GlobalStyleProps> = ({ children }) => {
       title4: "1.25rem",
       text1: "1.75rem",
       text2: "1.75rem",
+      text3: "3.25rem",
 
       // Mobile
       title1Mobile: "$title2",

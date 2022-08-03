@@ -44,9 +44,10 @@ export const HeaderButtonsArea = styled(Flex, {
 
 export const UserImage = styled("img", {
   borderRadius: "50%",
+
   "@mobile": {
-    width: "2.25rem",
-    height: "2.25rem",
+    width: "6rem",
+    height: "6rem",
   },
 });
 
@@ -77,6 +78,19 @@ export const ProjectsArea = styled("section", {
   backgroundImage: `url(${dots})`,
   backgroundRepeat: "no-repeat",
   backgroundPosition: "left top 11rem",
+  "@mobile": {
+    backgroundPosition: "right top 8rem",
+    padding: "$sectionMobile 0",
+  },
+});
+
+export const AboutMe = styled("section", {
+  padding: "$section 0",
+  backgroundColor: "$grey0",
+  backgroundImage: `url(${dots})`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "left top 11rem",
+  borderBottom: "2px solid $grey5",
   "@mobile": {
     backgroundPosition: "right top 8rem",
     padding: "$sectionMobile 0",

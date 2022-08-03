@@ -12,7 +12,12 @@ import {
   ContactCardContent,
 } from "./style";
 
-import { FaWhatsapp, FaEnvelopeOpen, FaLinkedin } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaEnvelopeOpen,
+  FaLinkedin,
+  FaFileDownload,
+} from "react-icons/fa";
 import { useRef } from "react";
 import { userData } from "@/utils/userData";
 
@@ -30,13 +35,12 @@ export const Contacts = () => {
               <Text type="heading2" color="grey4">
                 Let's set up a conversation and{" "}
                 <Text as="span" type="heading2" color="brand1">
-                  develop our creativity
+                  develop our projects
                 </Text>{" "}
                 together?
               </Text>
               <Text color="grey2" type="body1">
-                Advertise your brand organically within Dribbble’s design
-                inspiration feed.
+                Let's talk?
               </Text>
             </ContactSectionText>
           </motion.div>
@@ -50,8 +54,7 @@ export const Contacts = () => {
                   My Whatsapp
                 </Text>
                 <Text color="grey2" type="body2">
-                  I'm available for a voice chat, let's about creativity
-                  together?
+                  I'm available, let's about projects together?
                 </Text>
                 <Text
                   as="a"
@@ -81,12 +84,13 @@ export const Contacts = () => {
                   color="grey2"
                   type="body2"
                   target="_blank"
-                  href={`mailto=${userData.emailUser}`}
+                  href={`mailto:${userData.emailUser}`}
                 >
                   Send email now
                 </Text>
               </ContactCardContent>
             </ContactCard>
+
             <ContactCard>
               <ContactCardImage className="linkedin">
                 <FaLinkedin color="#fff" size={24} />
@@ -104,9 +108,34 @@ export const Contacts = () => {
                   color="grey2"
                   type="body2"
                   target="_blank"
-                  href={userData.linkedinUser}
+                  href={`https://linkedin.com/in/${userData.linkedinUser}`}
                 >
-                  Go to Telegram Now
+                  Send me a connection
+                </Text>
+              </ContactCardContent>
+            </ContactCard>
+
+            <ContactCard>
+              <ContactCardImage className="curriculum">
+                <FaFileDownload color="#fff" size={24} />
+              </ContactCardImage>
+              <ContactCardContent>
+                <Text type="heading4" color="grey4">
+                  My curriculum
+                </Text>
+                <Text color="grey2" type="body2">
+                  To see about experiences, hard skills and more
+                </Text>
+                <Text
+                  as="a"
+                  color="grey2"
+                  type="body2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://drive.google.com/file/d/1iZZ4xblAEbHfyzRD7_HKozgnfynqY0GV/view?usp=sharing"
+                  download="curriculo_YasminAlves"
+                >
+                  Click to open document
                 </Text>
               </ContactCardContent>
             </ContactCard>
