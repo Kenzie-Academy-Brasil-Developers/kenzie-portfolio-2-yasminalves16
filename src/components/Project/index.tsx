@@ -17,8 +17,10 @@ interface ReposType {
   name: string;
   language: string;
   description: string;
-  git_url: string;
+  html_url: string;
   homepage: string;
+  archived: boolean;
+  topics: Array<String>;
 }
 
 export const Project = (): JSX.Element => {
@@ -38,51 +40,64 @@ export const Project = (): JSX.Element => {
 
   return (
     <>
-      {repositories?.map((repository) => (
-        <ProjectWrapper key={repository.id}>
-          <ProjectTitle
-            as="h2"
-            type="heading3"
-            css={{ marginBottom: "$3" }}
-            color="grey4"
-          >
-            {repository.name}
-          </ProjectTitle>
+      {repositories?.map((repository) =>
+        repository.archived == false ? (
+          <ProjectWrapper key={repository.id}>
+            <ProjectTitle
+              as="h2"
+              type="heading3"
+              css={{ marginBottom: "$3" }}
+              color="grey4"
+            >
+              {repository.name}
+            </ProjectTitle>
 
-          <ProjectStack>
-            <Text type="body2" color="grey2">
-              Linguagem:
+            <ProjectStack>
+              <Text type="body2" color="grey2">
+                Linguagem:
+              </Text>
+              {repository.language ? (
+                <ProjectStackTech>
+                  <Text color="grey2" type="body2">
+                    {repository.language}
+                  </Text>
+                </ProjectStackTech>
+              ) : (
+                <ProjectStackTech>
+                  <Text color="grey2" type="body2">
+                    Python
+                  </Text>
+                </ProjectStackTech>
+              )}
+            </ProjectStack>
+
+            <ProjectStack>
+              <Text type="body2" color="grey2">
+                Tecnologias:
+              </Text>
+              {repository.topics?.map((topics) => (
+                <Text color="grey2" type="body2">
+                  {topics}
+                </Text>
+              ))}
+            </ProjectStack>
+
+            <Text type="body1" color="grey2">
+              {repository.description?.substring(0, 129)}
             </Text>
-            {repository.language ? (
-              <ProjectStackTech>
-                <Text color="grey2" type="body2">
-                  {repository.language}
-                </Text>
-              </ProjectStackTech>
-            ) : (
-              <ProjectStackTech>
-                <Text color="grey2" type="body2">
-                  Python
-                </Text>
-              </ProjectStackTech>
-            )}
-          </ProjectStack>
-
-          <Text type="body1" color="grey2">
-            {repository.description?.substring(0, 129)}
-          </Text>
-          <ProjectLinks>
-            <ProjectLink target="_blank" href={repository.git_url}>
-              <FaGithub /> Github Code
-            </ProjectLink>
-            {repository.homepage && (
-              <ProjectLink target="_blank" href={repository.homepage}>
-                <FaShare /> Aplicação
+            <ProjectLinks>
+              <ProjectLink target="_blank" href={repository.html_url}>
+                <FaGithub /> Github Code
               </ProjectLink>
-            )}
-          </ProjectLinks>
-        </ProjectWrapper>
-      ))}
+              {repository.homepage && (
+                <ProjectLink target="_blank" href={repository.homepage}>
+                  <FaShare /> Aplicação
+                </ProjectLink>
+              )}
+            </ProjectLinks>
+          </ProjectWrapper>
+        ) : null
+      )}
     </>
   );
 };
